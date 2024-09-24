@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="test"></div>
+</body>
+<script>
+// 创建 10万个待插入的 DOM 元素
+let tasks = Array.from({ length: 100000 }, (_, index) => {
+  const div = document.createElement('div');
+  div.textContent = `Element ${index + 1}`;
+  return div;
+});
+
+const startTime = new Date().getTime();
+tasks.forEach((element) => {
+  // console.log(2);
+  document.querySelector('.test').appendChild(element);
+});
+// 输出执行时间12毫秒
+console.log(new Date().getTime() - startTime);
+// 打印确实10万个元素插入进去了
+console.log(document.querySelector('.test').children.length);
+
+
+
+
+
+
+
+
+// [...new Array(100).keys()].forEach((item) => {
+// //    document.appendChild(document.createElement('p'))
+// })
+
+
+// function processTask(element) {
+//   document.body.appendChild(element);
+// }
+
+// function myNonCriticalTask(deadline) {
+//   // 如果有剩余空闲时间且还有未处理的任务，执行任务
+//   while (deadline.timeRemaining() > 0 && tasks.length > 0) {
+//     processTask(tasks.shift()); // 取出并处理第一个任务
+//   }
+
+//   // 如果还有未完成的任务，继续在下一个空闲时间调用
+//   if (tasks.length > 0) {
+//     requestIdleCallback(myNonCriticalTask);
+//   }
+// }
+
+// // 调用 requestIdleCallback 开始执行任务
+// requestIdleCallback(myNonCriticalTask);
+
+
+
+
+</script>
+
+</html>
